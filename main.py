@@ -1,3 +1,4 @@
 from views import menuViews
 
-menuViews.menuPrincipal()
+main = menuViews
+main.menuPrincipal()

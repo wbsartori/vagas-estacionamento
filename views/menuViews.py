@@ -22,30 +22,30 @@ def menuPrincipal():
         print('5 - RESUMO DE VAGAS.')
         print('0 - SAIR.')
         print('')
-        op = int(input('Escolha uma opcao: '))
+        opcao = int(input('Escolha uma opcao: '))
 
-        if( op == 1):            
+        if( opcao == 1):            
             vagas = vagasService.vagasService
             vagas.vagas()
 
-        elif( op == 2):            
+        elif( opcao == 2):            
             vagas = vagasService.vagasService
             vagas.vagasDisponiveis()
-        elif( op == 3):            
+        elif( opcao == 3):            
             vagas = vagasService.vagasService
             vagas.estacionarCarro()
 
-        elif( op == 4):            
+        elif( opcao == 4):            
             vagas = vagasService.vagasService
             vagas.removerCarro()
 
-        elif( op == 5):            
+        elif( opcao == 5):            
             vagas = vagasService.vagasService
             vagas.resumoEstacionamento()
 
-        elif( op == 0):            
+        elif( opcao == 0):            
             print('Obrigado por usar nosso sistema.')
-            time.sleep(2)
+            time.sleep(0.5)
             break
 
         else:
