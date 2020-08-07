@@ -180,7 +180,10 @@ class Cadastros():
                     print('Obrigado por utilizar nossos serviços.')
                     time.sleep(0.8)
 
+            #RESUMO DAS VAGAS
             elif opcoesPrincipal == 5:
+                cont = 0
+                cont2 = 0
                 self.clear()                
                 print(' # RESUMO DAS VAGAS#')
                 print('')
@@ -192,6 +195,30 @@ class Cadastros():
                 print('')
                 excluirOP = int(input('Operação: '))
                 print('')
+
+                vagasService = VagaService.VagaService
+                vagas = vagasService.listar(vagasService)
+
+                if (vagas):
+                    self.clear()
+                    print('------------------')
+                    for vaga in vagas:
+                        if vaga['status'] == '0':
+                            cont += 1                            
+                        else:    
+                            cont2 += 1                            
+
+                    print('\n Vagas Livres: {}'.format(cont) )
+                    print('------------------')
+                    print('\n Vagas Ocupada: {}'.format(cont2) )
+                    print('------------------')
+                    input(str('\nDigite algo para continuar...\n'))
+
+                else:
+                    print('Finalizando Operação de Listagem.')
+                    time.sleep(1)
+                    print('Obrigado por utilizar nossos serviços.')
+                    time.sleep(0.8)
                 
             elif opcoesPrincipal == 6:
                 i = ' '
