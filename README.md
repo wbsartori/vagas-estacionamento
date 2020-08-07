@@ -20,3 +20,12 @@ funcione corretamente:
       depois de escolher qualquer opção deve sempre voltar ao menu. Deve gravar as vagas livre e ocupadas em um
       arquivo, assim ao finalizar o programa não será perdido as informações.</li>
 </ul>
+
+
+<h3>Instrução</h3>
+
+<ul>
+  <li>Antes de iniciar o programa instalar a lib com o comando abaixo.</li>
+  <li>pip install -r requirements.txt</li>  
+  <li>iniciar o programa com comando: python main.py </li>
+</ul>

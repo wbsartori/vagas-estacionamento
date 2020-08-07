@@ -20,7 +20,20 @@ class Cadastros():
             os.system('cls')
         else:
             os.system('clear')
-    def menu(self):
+
+
+    def zerarDados(self):
+        dados = {}
+        dados ['id'] = id
+        dados['vaga'] = 'Vaga ' + dados ['id']
+        dados['carro'] = ''
+        dados ['status'] = '0'
+
+        vagaService = VagaService.VagaService
+        retorno = vagaService.removerCarro(vagaService, id, dados)
+
+
+    def menu(self):        
         while 1:
             self.clear()                    
             print('# Vagas de Estacionamento #')
@@ -88,12 +101,12 @@ class Cadastros():
                     print('LISTA DE VAGAS')
 
                     vagasService = VagaService.VagaService
-                    vagas = vagasService.listar(vagasService)
+                    vagasDisponiveis = vagasService.listar(vagasService)
 
-                    if (vagas):
+                    if (vagasDisponiveis):
                         self.clear()
                         print('------------------')
-                        for vaga in vagas:
+                        for vaga in vagasDisponiveis:
                             if vaga['status'] == '0':
                                 print('ID: '+ vaga['id'])
                                 print('\nVaga: '    + vaga['vaga'])
@@ -163,11 +176,16 @@ class Cadastros():
                 excluirOP = int(input('Operação: '))
                 print('')
                 if excluirOP == 1:
-                    id      = input(str('Digite o ID do carro que deseja remover:'))                                        
-                    status  = input(str('Digite 0 para remover o carro da vaga selecionada: '))
+                    id      = str(input('Digite o ID do carro que deseja remover:'))                                                            
+
+                    dados = {}
+                    dados['id'] = id
+                    dados['vaga'] = 'Vaga ' + dados ['id']
+                    dados['carro'] = ''
+                    dados['status'] = '0'
 
                     vagaService = VagaService.VagaService
-                    retorno = vagaService.removerCarro(vagaService, id, status)
+                    retorno = vagaService.removerCarro(vagaService, id, dados)
 
                     if retorno:
                         print('Carro removido com sucesso!')
@@ -180,7 +198,10 @@ class Cadastros():
                     print('Obrigado por utilizar nossos serviços.')
                     time.sleep(0.8)
 
+            #RESUMO DAS VAGAS
             elif opcoesPrincipal == 5:
+                cont = 0
+                cont2 = 0
                 self.clear()                
                 print(' # RESUMO DAS VAGAS#')
                 print('')
@@ -192,6 +213,30 @@ class Cadastros():
                 print('')
                 excluirOP = int(input('Operação: '))
                 print('')
+
+                vagasService = VagaService.VagaService
+                vagas = vagasService.listar(vagasService)
+
+                if (vagas):
+                    self.clear()
+                    print('------------------')
+                    for vaga in vagas:
+                        if vaga['status'] == '0':
+                            cont += 1                            
+                        else:    
+                            cont2 += 1                            
+
+                    print('\n Vagas Livres: {}'.format(cont) )
+                    print('------------------')
+                    print('\n Vagas Ocupada: {}'.format(cont2) )
+                    print('------------------')
+                    input(str('\nDigite algo para continuar...\n'))
+
+                else:
+                    print('Finalizando Operação de Listagem.')
+                    time.sleep(1)
+                    print('Obrigado por utilizar nossos serviços.')
+                    time.sleep(0.8)
                 
             elif opcoesPrincipal == 6:
                 i = ' '

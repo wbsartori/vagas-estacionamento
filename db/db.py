@@ -1,15 +1,14 @@
 import json
 import os
 
-# Classe responsável por manipular o  nosso sistema
-# de arquivos.
+# Classe responsável por manipular os dados do sistema
 class DB():
 
     # Função que retorna o caminho do arquivo
     # com base no nome da tabela.
     #
-    # Exemplo: Parâmetro = 'usuario'
-    # Retorno: '/usuarioqualquer/sistema-bancario/db/usuario.json'
+    # Exemplo: Parâmetro = 'estacionamento'
+    # Retorno: 'db/estacionamento.json'
     def getJSON(self, tabela):
 
         here = os.path.dirname(os.path.abspath(__file__))
@@ -18,16 +17,15 @@ class DB():
         return filename
 
     # Função que faz um "select" nos arquivos de banco.
-    # Recebemos por parâmetro o nome da tabela (usuario ou conta)
+    # Recebemos por parâmetro o nome da tabela (estacionamento)
     # que representa o nome do arquivo.
     #
-    # O segundo parâmetro é uma implementação simples de um "where".
-    # Caso venha vazio, é retornado todos os registros do arquivo
-    # especificado. Caso contrário é aplicado um filtro.
-    #
-    # Exemplo de WHERE: ['id','250']
-    # Se a tabela for usuario, irá buscar um usuário que contenha
-    # o campo 'id' com valor de '250'.
+    # O segundo parâmetro é uma implementação de um "where".
+    # Caso venha vazio, é retornado todos os registros do arquivo especificado. 
+    # Caso contrário é aplicado um filtro.
+    # Exemplo de WHERE: ['id','1']
+    # Se a tabela for estacionamento, irá buscar a Vaga que contenha
+    # o campo 'id' com status Ocupado que é '1'.
     def select(self, tabela, where):
         # Pega o nome do arquivo.
         filename = self.getJSON(self, tabela)
@@ -44,7 +42,6 @@ class DB():
             elif len(where) == 2:
                 # Percorre todos os itens do arquivo
                 for estacionamento in vaga[tabela]:
-
                     # Verifica pela chave e valor se algum registro bate
                     if estacionamento[where[0]] == where[1]:
                         # Se sim ele é retornado
@@ -53,8 +50,7 @@ class DB():
 
     # Função para editar um registro nos arquivos.
     # Recebemos o nome de um arquivo por parâmetro, um filtro Where
-    # (Seguindo o exemplo do select) para saber qual registro editar,
-    # e os novos valores
+    # (Seguindo o exemplo do select) para saber qual registro editar,e os novos valores
     def edit(self, tabela, where, valores):
         # Pega o nome do arquivo.
         filename = self.getJSON(self, tabela)
@@ -76,3 +72,29 @@ class DB():
                 json.dump(estacionamento, file, indent=4)
         # Retorno
         return True
+
+  
+    def update(self, tabela, where, valores):
+        # Pega o nome do arquivo.
+        filename = self.getJSON(self, tabela)
+        # Abre o arquivo
+        with open(filename) as file:
+            # Carrega o arquivo em uma variável
+            estacionamento = json.load(file)
+            # Pega o tamanho do arquivo para usar em um laço.
+            length = len(estacionamento[tabela])
+            # Para cada item existente
+            for row in range(length):
+                # Verifica se o campo bate com o valor do where
+                if estacionamento[tabela][row][where[0]] == str(where[1]):
+                    # Seta os novos dados recebidos
+                    estacionamento[tabela][row] = valores
+            # Abre o arquivo com permissão de escrita
+            with open(filename, 'w') as file:
+                # Salva o novo arquivo atualizado
+                json.dump(estacionamento, file, indent=4)
+                
+        # Retorno
+        return True
+
+  

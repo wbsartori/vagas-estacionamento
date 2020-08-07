@@ -7,10 +7,9 @@ class VagaService():
         # Retorna a consulta select da classe que manipula o banco.
         return db.DB.select(db.DB, 'estacionamento', '')
 
-    def removerCarro(self, status, id, dados):
-
+    def removerCarro(self, id,dados ):
         # Chama a função edit e retorna a resposta.
-        retornoRemoveCarro = db.DB.edit(db.DB, 'estacionamento', ['id', id,'status',status],dados)        
+        retornoRemoveCarro = db.DB.update(db.DB, 'estacionamento', ['id', id,], dados)        
         return retornoRemoveCarro
 
     def estacionarCarro(self, dados, id):

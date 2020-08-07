@@ -2,50 +2,50 @@
     "estacionamento": [
         {
             "id": "1",
-            "vaga": "Vaga_1",
-            "carro": "Sandero 2009",
+            "vaga": "Vaga 1",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "2",
-            "vaga": "Vaga_2",
-            "carro": "Gol GT 1998",
+            "vaga": "Vaga 2",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "3",
             "vaga": "Vaga 3",
-            "carro": "Ford Fusion 2018",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "4",
-            "vaga": "Vaga_4",
-            "carro": "Honda Civic 2016",
+            "vaga": "Vaga 4",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "5",
             "vaga": "Vaga_5",
-            "carro": "Eco Sport 2015",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "6",
             "vaga": "Vaga_6",
-            "carro": "Fusca 1972",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "7",
             "vaga": "Vaga_7",
-            "carro": "Ford Fiesta 2016",
+            "carro": "",
             "status": "0"
         },
         {
             "id": "8",
             "vaga": "Vaga_8",
-            "carro": "Ford Focus 2013",
+            "carro": "",
             "status": "0"
         }
     ]
