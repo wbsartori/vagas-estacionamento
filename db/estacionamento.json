@@ -4,19 +4,19 @@
             "id": "1",
             "vaga": "Vaga_1",
             "carro": "Sandero 2009",
-            "status": "1"
+            "status": "0"
         },
         {
             "id": "2",
             "vaga": "Vaga_2",
             "carro": "Gol GT 1998",
-            "status": "1"
+            "status": "0"
         },
         {
             "id": "3",
             "vaga": "Vaga 3",
             "carro": "Ford Fusion 2018",
-            "status": "1"
+            "status": "0"
         },
         {
             "id": "4",
@@ -40,13 +40,13 @@
             "id": "7",
             "vaga": "Vaga_7",
             "carro": "Ford Fiesta 2016",
-            "status": "1"
+            "status": "0"
         },
         {
             "id": "8",
             "vaga": "Vaga_8",
             "carro": "Ford Focus 2013",
-            "status": "1"
+            "status": "0"
         }
     ]
 }
